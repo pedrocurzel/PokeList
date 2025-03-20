@@ -1,27 +1,136 @@
-#container {
-  text-align: center;
+$search-bar-width: 160px;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+
+ion-toolbar {
+  --min-height: 70px;
+  --background: var(--pokemon-red);
+  --color: white;
+
+  img {
+    padding-left: 20px;
+    height: 60px;
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.header1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  .header2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.search-button {
+  padding: 0px 20px 0px 5px;
 }
 
-#container a {
-  text-decoration: none;
+.search-bar {
+  display: inline-block !important;
+  width: 0px;
+  opacity: 0;
+  
+  ion-input {
+    display: inline-block !important;
+    --highlight-color-focused: white;
+    --placeholder-color: var(--pokemon-blue);
+    --highlight-height: 0px;
+    --background: var(--pokemon-yellow);
+    --border-radius: 16px;
+    --padding-start: 10px;
+    --color:  var(--pokemon-blue);
+  }
+}
+
+@keyframes showsearchbar {
+  from {
+    width: 0px;
+    opacity: 0;
+  }
+
+  to {
+    width: $search-bar-width;
+    opacity: 1;
+  }
+}
+
+.show-bar {
+  animation-name: showsearchbar;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1.5);
+}
+
+.hide-bar {
+  animation-name: hidesearchbar;
+  animation-duration: .5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hidesearchbar {
+  from {
+    width: $search-bar-width;
+    opacity: 1;
+  }
+
+  to {
+    width: 0px;
+    opacity: 0;
+  }
+}
+
+
+ion-icon {
+  font-size: 26px;
+
+}
+
+.pokemon-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .pokemon {
+    text-align: center;
+
+    &:hover {
+      box-shadow: 0px 0px 10px 5px var(--pokemon-blue);
+    } 
+  }
+ 
+}
+
+@media (min-width: 901px) {
+  .pokemon {
+    flex: 1 0 31% !important;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .pokemon {
+    flex: 1 0 46% !important;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .pokemon {
+    flex: 1 0 50% !important;
+  }
+
+  ion-toolbar {
+    img {
+      padding-left: 10px !important;
+      height: 40px;
+    }
+    ion-button {
+      padding-right: 10px !important;
+    }
+  }
 }

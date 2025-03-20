@@ -1,20 +1,26 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" mode="md">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <div class="header1">
+      <img src="../../assets/pokeapi-logo.png" />
+      <div class="header2">
+        <div class="search-bar" [ngClass]="{'show-bar': isFiltering, 'hide-bar': !isFiltering && animationTriggered}" >
+          <ion-input [(ngModel)]="searchString" placeholder="Pesquise aqui!" />
+        </div>
+        <ion-button (click)="toggleFilter()" class="search-button" slot="end" fill="clear" color="primary">
+          <ion-icon name="search" />
+        </ion-button>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="pokemon-list">
+    <ion-card *ngFor="let pokemon of filterPokemons()" class="pokemon" button="true" (click)="seePokemonDetails(pokemon)" >
+      <img [alt]="'Image of ' + pokemon.name" [src]="getPokemonImgClass(pokemon)" />
+      <ion-card-header>
+        <ion-card-title>{{capitalizePokemonName(pokemon.name)}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
   </div>
 </ion-content>

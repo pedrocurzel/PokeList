@@ -1,0 +1,41 @@
+ion-toolbar {
+    --min-height: 70px;
+    --background: var(--pokemon-red);
+    --color: white;
+  
+    img {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+
+
+.bold {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+ion-button {
+  --background: var(--pokemon-red);
+}
+
+.normal-color { background-color: #A8A878; }  
+.fire-color { background-color: #F08030; }  
+.water-color { background-color: #6890F0; }  
+.electric-color { background-color: #F8D030; }  
+.grass-color { background-color: #78C850; }  
+.ice-color { background-color: #98D8D8; }  
+.fighting-color { background-color: #C03028; }  
+.poison-color { background-color: #A040A0; }  
+.ground-color { background-color: #E0C068; }  
+.flying-color { background-color: #A890F0; }  
+.psychic-color { background-color: #F85888; }  
+.bug-color { background-color: #A8B820; }  
+.rock-color { background-color: #B8A038; }  
+.ghost-color { background-color: #705898; }  
+.dragon-color { background-color: #7038F8; }  
+.dark-color { background-color: #705848; }  
+.steel-color { background-color: #B8B8D0; }  
+.fairy-color { background-color: #EE99AC; }  

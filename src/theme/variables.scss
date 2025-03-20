@@ -1,2 +1,14 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+$pokemon-red: #ff0000;
+$pokemon-blue: #3b4cca;
+$pokemon-yellow: #ffde00;
+$pokemon-orange: #b3a125;
+
+:root {
+    --pokemon-red: #ff0000;
+  --pokemon-blue: #3b4cca;
+  --pokemon-yellow: #ffde00;
+  --pokemon-orange: #b3a125;
+}

@@ -1,0 +1,60 @@
+<ion-header [translucent]="true" mode="md">
+  <ion-toolbar>
+    <ion-back-button slot="start"></ion-back-button>
+    <div style="text-align: center;">
+      <img (click)="goToHome()"  src="../../assets/pokeapi-logo.png" height="60px" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="pokemon">
+  <div style="text-align: center;">
+    <h1>{{capitalizeText(pokemon.name!)}} - {{pokemon.id}}</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div *ngFor="let type of pokemon.types" style="display: inline-block; padding: 5px; border-radius: 5px; margin-right: 3px; margin-bottom: 3px;" [ngClass]="type.type?.name + '-color'">
+            {{capitalizeText(type.type?.name!)}}
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" sizeSm="6">
+          <img [src]="getPokemonImg()" />
+        </ion-col>
+        <ion-col size="12" sizeSm="6">
+          <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 50vh;">
+            <ion-col class="ion-align-items-center">
+              <div style="height: fit-content; background-color: lightblue; border-radius: 10px;">
+                <ion-row>
+                  <ion-col>
+                    <p>Altura:</p>
+                    <p class="bold">{{pokemon.height! / 10}} m</p>
+
+                    <p>Peso:</p>
+                    <p class="bold">{{pokemon.weight! / 10}} Kg</p>
+                  </ion-col>
+                  <ion-col>
+                    <p>Habilidades:</p>
+                      <p class="bold" *ngFor="let ab of pokemon.abilities">
+                        {{capitalizeText(ab.ability?.name!)}}
+                      </p>
+                  </ion-col>
+                </ion-row>
+                
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 100px;">
+        <ion-col>
+          <ion-button [disabled]="pokemon.id == '1'" (click)="changePokemon('backward')" >Anterior</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="changePokemon('forward')">Próximo</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
