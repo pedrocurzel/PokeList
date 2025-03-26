@@ -38,7 +38,6 @@ export class HomePage implements OnInit {
   }
 
   filterPokemons(): Pokemon[]  {
-    return this.result!;
     if (this.searchString == "") {
       return this.result!;
     }
