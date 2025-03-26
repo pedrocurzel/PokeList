@@ -12,10 +12,12 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  async listPokemons(limit = 351) {
-    return await firstValueFrom(
-      this.http.get<PokemonList>(baseApiUrl + `?limit=${limit}`)
+  async listPokemons(limit = 151) {
+    const pokemonsPromises = Array.from({ length: limit }, (_, i) =>
+      firstValueFrom(this.http.get(`${baseApiUrl}/${i+1}`))
     );
+
+    return await Promise.all(pokemonsPromises) as Pokemon[];
   }
 
   async getPokemonDetails(pokemonId: number) {

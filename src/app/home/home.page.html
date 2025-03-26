@@ -16,12 +16,5 @@
     </div>
   </div>
 
-  <div class="pokemon-list">
-    <ion-card *ngFor="let pokemon of filterPokemons()" class="pokemon" button="true" (click)="seePokemonDetails(pokemon)" >
-      <img [alt]="'Image of ' + pokemon.name" [src]="getPokemonImgClass(pokemon)" />
-      <ion-card-header>
-        <ion-card-title>{{capitalizePokemonName(pokemon.name)}}</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-  </div>
+  <app-pokemon-card *ngIf="result" [pokemons]="filterPokemons()"></app-pokemon-card>
 </ion-content>

@@ -3,6 +3,7 @@ import { ApiService, PokemonList } from '../services/api.service';
 import { Router } from '@angular/router';
 import { capitalize, getPokemonId, getPokemonImg } from '../utils/pokemon.utils';
 import { LoadingController } from '@ionic/angular';
+import { Pokemon } from '../models/Pokemon';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,9 @@ import { LoadingController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  result?: PokemonList;
+  //result?: PokemonList | null = null;
+
+  result: Pokemon[] | null = null;
 
   isFiltering = false;
   animationTriggered = false;
@@ -34,16 +37,13 @@ export class HomePage implements OnInit {
     return getPokemonImg(pokemon);
   }
 
-  filterPokemons(): { name: string; url: string; }[]  {
+  filterPokemons(): Pokemon[]  {
+    return this.result!;
     if (this.searchString == "") {
-      return this.result?.results!;
+      return this.result!;
     }
 
-    return this.result?.results!.filter(x => x.name.includes(this.searchString))!;
-  }
-
-  capitalizePokemonName(name: string) {
-    return capitalize(name);
+    return this.result!.filter(x => x.name!.includes(this.searchString))!;
   }
 
   seePokemonDetails(pokemon: {name: string, url: string}) {

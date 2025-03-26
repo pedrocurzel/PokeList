@@ -6,7 +6,10 @@ export function getPokemonImg(pokemon: {name: string, url: string}) {
 
 export function getPokemonId(url: string) {
     const match = url.match(/\/(\d+)\/$/);
-    return match ? match[1] : 1;
+
+    if(!match) return "1";
+
+    return match[1];
 }
 
 export function capitalize(name: string) {

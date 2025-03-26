@@ -1,3 +1,19 @@
-<p>
-  pokemon-card works!
-</p>
+<div class="pokemon-container">
+  @for (pokemon of pokemons; track $index) {
+    <div class="pokemon-card" [ngClass]="pokemon.types[0].type?.name + '-color'">
+      <img [src]="getPokemonImg(pokemon)"/>
+      <div class="pokemon-info">
+        <h2>{{capitalizePokemonName(pokemon.name!)}}</h2>
+        <h6>{{styledPokemonId(pokemon.id!)}}</h6>
+        <div class="pokemon-type-container">
+          @for (type of pokemon.types; track $index) {
+            <div class="pokemon-type" [ngClass]="type.type?.name + '-color-older'">
+              <ion-icon [src]="'../../../assets/' + type.type?.name! + '.svg'"></ion-icon>
+              <p>{{capitalizePokemonName(type.type?.name!)}}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>
