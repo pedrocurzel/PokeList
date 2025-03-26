@@ -1,20 +1,21 @@
-<ion-header [translucent]="true" mode="md">
-  <ion-toolbar>
-    <div class="header1">
-      <img src="../../assets/pokeapi-logo.png" />
-      <div class="header2">
-        <div class="search-bar" [ngClass]="{'show-bar': isFiltering, 'hide-bar': !isFiltering && animationTriggered}" >
-          <ion-input [(ngModel)]="searchString" placeholder="Pesquise aqui!" />
-        </div>
-        <ion-button (click)="toggleFilter()" class="search-button" slot="end" fill="clear" color="primary">
-          <ion-icon name="search" />
-        </ion-button>
-      </div>
-    </div>
-  </ion-toolbar>
-</ion-header>
+<!-- <ion-header [translucent]="true" mode="md" class="ion-no-border">
+  
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
+  <div class="toolbar">
+    <div>
+      <img src="../../assets/logo.png" style="display: block;"/>
+      <div class="search-row">
+        <ion-icon slot="start" name="search"></ion-icon>
+        <ion-input [(ngModel)]="searchString" type="text" placeholder="Pokemon name"/>
+        <button>
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="pokemon-list">
     <ion-card *ngFor="let pokemon of filterPokemons()" class="pokemon" button="true" (click)="seePokemonDetails(pokemon)" >
       <img [alt]="'Image of ' + pokemon.name" [src]="getPokemonImgClass(pokemon)" />

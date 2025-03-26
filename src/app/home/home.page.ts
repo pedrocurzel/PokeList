@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
   async ngOnInit() {
     let loading = await this.loadingCtrl.create({backdropDismiss: false});
     loading.present();
-    document.title = "Pokémons"
+    document.title = "Pokémons";
     this.result = await this.apiService.listPokemons();
     loading.dismiss();
   }
@@ -40,20 +40,6 @@ export class HomePage implements OnInit {
     }
 
     return this.result?.results!.filter(x => x.name.includes(this.searchString))!;
-  }
-
-  toggleFilter() {
-    clearTimeout(this.animationTimeoutRef);
-    this.animationTriggered = false;
-
-    this.isFiltering = !this.isFiltering;
-    this.animationTriggered = true;
-
-    this.searchString = "";
-
-    this.animationTimeoutRef = setTimeout(() => {
-      this.animationTriggered = false;
-    }, 500);
   }
 
   capitalizePokemonName(name: string) {

@@ -1,89 +1,45 @@
-$search-bar-width: 160px;
+$toolbar-padding: 35px;
 
-
-
-ion-toolbar {
-  --min-height: 70px;
-  --background: var(--pokemon-red);
-  --color: white;
-
-  img {
-    padding-left: 20px;
-    height: 60px;
+.toolbar {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  background-color: white;
+  padding:  $toolbar-padding;
+  
+  ion-icon {
+    color:  var(--pokemon-blue);
   }
-}
 
-.header1 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-
-  .header2 {
+  .search-row {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    button {
+      background-color: var(--pokemon-yellow);
+      color: var(--pokemon-blue);
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 10px;
+      width: 120px;
+
+      &:hover {
+        box-shadow: 0px 0px 5px 2px var(--pokemon-yellow);
+      }
+    }
   }
-}
 
-.search-button {
-  padding: 0px 20px 0px 5px;
-}
-
-.search-bar {
-  display: inline-block !important;
-  width: 0px;
-  opacity: 0;
-  
   ion-input {
     display: inline-block !important;
-    --highlight-color-focused: white;
+    --highlight-color-focused: var(--pokemon-blue);
     --placeholder-color: var(--pokemon-blue);
     --highlight-height: 0px;
-    --background: var(--pokemon-yellow);
     --border-radius: 16px;
     --padding-start: 10px;
     --color:  var(--pokemon-blue);
   }
 }
-
-@keyframes showsearchbar {
-  from {
-    width: 0px;
-    opacity: 0;
-  }
-
-  to {
-    width: $search-bar-width;
-    opacity: 1;
-  }
-}
-
-.show-bar {
-  animation-name: showsearchbar;
-  animation-duration: .5s;
-  animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0.3, 0, 0.3, 1.5);
-}
-
-.hide-bar {
-  animation-name: hidesearchbar;
-  animation-duration: .5s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes hidesearchbar {
-  from {
-    width: $search-bar-width;
-    opacity: 1;
-  }
-
-  to {
-    width: 0px;
-    opacity: 0;
-  }
-}
-
 
 ion-icon {
   font-size: 26px;
@@ -124,13 +80,4 @@ ion-icon {
     flex: 1 0 50% !important;
   }
 
-  ion-toolbar {
-    img {
-      padding-left: 10px !important;
-      height: 40px;
-    }
-    ion-button {
-      padding-right: 10px !important;
-    }
-  }
 }
