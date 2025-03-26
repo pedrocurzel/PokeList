@@ -8,13 +8,13 @@
       <img src="../../assets/logo.png" style="display: block;"/>
       <div class="search-row">
         <ion-icon slot="start" name="search"></ion-icon>
-        <ion-input [(ngModel)]="searchString" type="text" placeholder="Pokemon name"/>
-        <button>
+        <ion-input [(ngModel)]="searchString" (input)="checkFilterString()" type="text" placeholder="Pokemon name"/>
+        <button (click)="filter()" >
           Search
         </button>
       </div>
     </div>
   </div>
 
-  <app-pokemon-card *ngIf="result" [pokemons]="filterPokemons()"></app-pokemon-card>
+  <app-pokemon-card *ngIf="pokemons" [pokemons]="!isFiltering ?  pokemons : filterPokemons()"></app-pokemon-card>
 </ion-content>

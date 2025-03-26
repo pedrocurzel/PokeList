@@ -13,15 +13,10 @@ import { Pokemon } from '../models/Pokemon';
 })
 export class HomePage implements OnInit {
 
-  //result?: PokemonList | null = null;
-
-  result: Pokemon[] | null = null;
-
-  isFiltering = false;
-  animationTriggered = false;
-  animationTimeoutRef: any = null;
+  pokemons: Pokemon[] | null = null;
 
   searchString: string = "";
+  isFiltering = false;
 
   constructor(private apiService: ApiService, private router: Router, private loadingCtrl: LoadingController) {}
 
@@ -29,7 +24,7 @@ export class HomePage implements OnInit {
     let loading = await this.loadingCtrl.create({backdropDismiss: false});
     loading.present();
     document.title = "Pokémons";
-    this.result = await this.apiService.listPokemons();
+    this.pokemons = await this.apiService.listPokemons();
     loading.dismiss();
   }
 
@@ -37,12 +32,22 @@ export class HomePage implements OnInit {
     return getPokemonImg(pokemon);
   }
 
+  filter() {
+    this.isFiltering = true;
+  }
+
+  checkFilterString() {
+
+  }
+
   filterPokemons(): Pokemon[]  {
+
     if (this.searchString == "") {
-      return this.result!;
+      this.isFiltering = false;
+      return this.pokemons!;
     }
 
-    return this.result!.filter(x => x.name!.includes(this.searchString))!;
+    return this.pokemons!.filter(x => x.name!.includes(this.searchString))!;
   }
 
   seePokemonDetails(pokemon: {name: string, url: string}) {
