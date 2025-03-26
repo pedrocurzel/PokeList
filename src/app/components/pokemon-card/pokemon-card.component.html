@@ -1,6 +1,6 @@
 <div class="pokemon-container">
   @for (pokemon of pokemons; track $index) {
-    <div class="pokemon-card" [ngClass]="pokemon.types[0].type?.name + '-color'">
+    <div class="pokemon-card" [ngClass]="pokemon.types[0].type?.name + '-color'" (click)="seePokemonDetails(pokemon)" >
       <img [src]="getPokemonImg(pokemon)"/>
       <div class="pokemon-info">
         <h2>{{capitalizePokemonName(pokemon.name!)}}</h2>

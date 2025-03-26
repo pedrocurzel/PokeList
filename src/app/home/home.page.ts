@@ -18,7 +18,7 @@ export class HomePage implements OnInit {
   searchString: string = "";
   isFiltering = false;
 
-  constructor(private apiService: ApiService, private router: Router, private loadingCtrl: LoadingController) {}
+  constructor(private apiService: ApiService, private loadingCtrl: LoadingController) {}
 
   async ngOnInit() {
     let loading = await this.loadingCtrl.create({backdropDismiss: false});
@@ -36,10 +36,6 @@ export class HomePage implements OnInit {
     this.isFiltering = true;
   }
 
-  checkFilterString() {
-
-  }
-
   filterPokemons(): Pokemon[]  {
 
     if (this.searchString == "") {
@@ -49,11 +45,5 @@ export class HomePage implements OnInit {
 
     return this.pokemons!.filter(x => x.name!.includes(this.searchString))!;
   }
-
-  seePokemonDetails(pokemon: {name: string, url: string}) {
-    const id = getPokemonId(pokemon.url);
-    this.router.navigateByUrl(`/pokemon-detalhes/${id}`);
-  }
-
-  
+ 
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pokemon } from 'src/app/models/Pokemon';
 import { ApiService } from 'src/app/services/api.service';
 import { capitalize, getPokemonId, getPokemonImg } from 'src/app/utils/pokemon.utils';
@@ -13,7 +14,7 @@ export class PokemonCardComponent  implements OnInit {
 
   @Input() pokemons!: Pokemon[];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,10 @@ export class PokemonCardComponent  implements OnInit {
 
   styledPokemonId(id: string) {
     return "#" + `${id}`.padStart(3, "0");
+  }
+
+  seePokemonDetails(pokemon: Pokemon) {
+    this.router.navigateByUrl(`/pokemon-detalhes/${pokemon.id}`);
   }
 
 }
