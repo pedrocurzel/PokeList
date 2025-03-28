@@ -1,22 +1,42 @@
-ion-toolbar {
-    --min-height: 70px;
-    --background: var(--pokemon-red);
-    --color: white;
-  
-    img {
-      &:hover {
-        cursor: pointer;
-      }
+$main-padding: 40px;
+
+.upper-container {
+  display: flex; 
+  width: 100%; 
+  height: 100%; 
+  flex-direction: column;
+
+  .header {
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+    padding-top: $main-padding;
+    display: flex;
+    flex-direction: row;
+    ion-icon {
+      font-size: 25px;
+      color: white;
     }
   }
 
+  ion-icon {
+    font-size: 25px;
+    color: white;
+  }
+
+  .pokemon-name {
+    font-weight: bold;
+    color: white;
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center;
+    padding-left: $main-padding;
+    padding-right: $main-padding;
+  }
 
 
-.bold {
-  font-weight: bold;
-  font-size: 22px;
 }
 
-ion-button {
-  --background: var(--pokemon-red);
+img {
+  height: 250px;
 }
