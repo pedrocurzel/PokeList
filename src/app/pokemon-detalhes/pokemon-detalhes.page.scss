@@ -1,22 +1,127 @@
-ion-toolbar {
-    --min-height: 70px;
-    --background: var(--pokemon-red);
-    --color: white;
-  
-    img {
-      &:hover {
-        cursor: pointer;
-      }
+$main-padding: 40px;
+
+.upper-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+
+    .header {
+        padding-left: $main-padding;
+        padding-right: $main-padding;
+        padding-top: $main-padding;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        ion-icon {
+            font-size: 25px;
+            color: white;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
     }
-  }
+
+    ion-icon {
+        font-size: 25px;
+        color: white;
+    }
+
+    .pokemon-info {
+        font-weight: bold;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: $main-padding;
+        padding-right: $main-padding;
+
+    }
+
+    .pokemon-name {
+        display: flex;
+        flex-direction: column;
+    }
 
 
+    .types-container {
+        display: inline-block;
+        padding: 5px;
+        border-radius: 5px;
+        margin-right: 3px;
+        margin-bottom: 3px;
+        text-align: center;
+        ion-icon {
+            font-size: 12px;
+        }
+    }
 
-.bold {
-  font-weight: bold;
-  font-size: 22px;
+
 }
 
-ion-button {
-  --background: var(--pokemon-red);
+.pokemon-img {
+    height: 250px;
+}
+
+
+.pokemon-details-container {
+    background-color: white;
+    border-radius: 20px 20px 0px 0px;
+    margin-top: 200px;
+    position: relative;
+
+    flex: 1;
+
+    .pokemon-img {
+        width: 250px;
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+
+
+}
+
+.title {
+    font-weight: bold;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+ion-range {
+    --knob-size: 0px;
+}
+
+ion-segment-content {
+    padding: 20px;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .gallery-container {
+        grid-template-columns: 1fr 1fr !important;
+        text-align: center !important;
+    }
 }

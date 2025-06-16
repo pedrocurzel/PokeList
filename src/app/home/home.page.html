@@ -5,7 +5,12 @@
 <ion-content [fullscreen]="true">
   <div class="toolbar">
     <div>
-      <img src="../../assets/logo.png" style="display: block;"/>
+      <div style="display: grid; grid-template-columns: 1fr 1fr;">
+        <img src="../../assets/logo.png" style="display: block;"/>
+        <div style="text-align: end;">
+            <ion-icon (click)="showFavs()" style="cursor: pointer;" [name]="favsIcon"></ion-icon>
+        </div>
+      </div>
       <div class="search-row">
         <ion-icon slot="start" name="search"></ion-icon>
         <ion-input [(ngModel)]="searchString" type="text" placeholder="Pokemon name"/>
@@ -16,5 +21,5 @@
     </div>
   </div>
 
-  <app-pokemon-card *ngIf="pokemons" [pokemons]="!isFiltering ?  pokemons : filterPokemons()"></app-pokemon-card>
+  <app-pokemon-card *ngIf="pokemons" [pokemons]="!isFiltering ?  pokemons : filterPokemons()" [isShowingFavs]="isShowingFavs"></app-pokemon-card>
 </ion-content>

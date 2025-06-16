@@ -2,48 +2,66 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService, PokemonList } from '../services/api.service';
 import { Router } from '@angular/router';
 import { capitalize, getPokemonId, getPokemonImg } from '../utils/pokemon.utils';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ViewWillEnter } from '@ionic/angular';
 import { Pokemon } from '../models/Pokemon';
+import { FavPokemonService } from '../services/fav-pokemon.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  standalone: false,
+    selector: 'app-home',
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+    standalone: false,
 })
 export class HomePage implements OnInit {
 
-  pokemons: Pokemon[] | null = null;
+    pokemons: Pokemon[] | null = null;
 
-  searchString: string = "";
-  isFiltering = false;
+    pokemonsCopy: Pokemon[] | null = null;
 
-  constructor(private apiService: ApiService, private loadingCtrl: LoadingController) {}
+    searchString: string = "";
+    isFiltering = false;
 
-  async ngOnInit() {
-    let loading = await this.loadingCtrl.create({backdropDismiss: false});
-    loading.present();
-    document.title = "Pokémons";
-    this.pokemons = await this.apiService.listPokemons();
-    loading.dismiss();
-  }
+    favsIcon: "heart" | "heart-outline" = "heart-outline";
+    isShowingFavs = false;
 
-  getPokemonImgClass(pokemon: {name: string, url: string}) {
-    return getPokemonImg(pokemon);
-  }
+    constructor(private apiService: ApiService, private loadingCtrl: LoadingController, private favPokemonsService: FavPokemonService) { }
 
-  filter() {
-    this.isFiltering = true;
-  }
-
-  filterPokemons(): Pokemon[]  {
-
-    if (this.searchString == "") {
-      this.isFiltering = false;
-      return this.pokemons!;
+    async ngOnInit() {
+        let loading = await this.loadingCtrl.create({ backdropDismiss: false });
+        loading.present();
+        document.title = "Pokémons";
+        this.pokemons = await this.apiService.listPokemons();
+        loading.dismiss();
     }
 
-    return this.pokemons!.filter(x => x.name!.includes(this.searchString))!;
-  }
- 
+    getPokemonImgClass(pokemon: { name: string, url: string }) {
+        return getPokemonImg(pokemon);
+    }
+
+    filter() {
+        this.isFiltering = true;
+    }
+
+    showFavs() {
+        this.isShowingFavs = !this.isShowingFavs;
+        if (this.isShowingFavs) {
+            this.pokemonsCopy = this.pokemons;
+            this.pokemons = this.favPokemonsService.retriveFavs();
+            this.favsIcon = "heart";
+        } else {
+            this.favsIcon = "heart-outline";
+            this.pokemons = this.pokemonsCopy;
+        }
+    }
+
+    filterPokemons(): Pokemon[] {
+
+        if (this.searchString == "") {
+            this.isFiltering = false;
+            return this.pokemons!;
+        }
+
+        return this.pokemons!.filter(x => x.name!.includes(this.searchString))!;
+    }
+
 }

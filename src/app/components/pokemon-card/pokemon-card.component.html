@@ -1,19 +1,20 @@
 <div class="pokemon-container">
   @for (pokemon of pokemons; track $index) {
-    <div class="pokemon-card" [ngClass]="pokemon.types[0].type?.name + '-color'" (click)="seePokemonDetails(pokemon)">
-      <img [src]="getPokemonImg(pokemon)"/>
-      <div class="pokemon-info">
-        <h2>{{capitalizePokemonName(pokemon.name!)}}</h2>
-        <h6>{{styledPokemonId(pokemon.id!)}}</h6>
+    <div class="pokemon-card" [ngClass]="pokemon.types[0].type?.name + '-color'">
+      <img (click)="seePokemonDetails(pokemon)" [src]="getPokemonImg(pokemon)"/>
+      <div (click)="seePokemonDetails(pokemon)" class="pokemon-info">
+         <h2>{{pokemon.name! | capitalize}}</h2>
+        <h6>{{pokemon.id! | stylePokemonId}}</h6>
         <div class="pokemon-type-container">
           @for (type of pokemon.types; track $index) {
             <div class="pokemon-type" [ngClass]="type.type?.name + '-color-older'">
               <ion-icon [src]="'../../../assets/' + type.type?.name! + '.svg'"></ion-icon>
-              <p>{{capitalizePokemonName(type.type?.name!)}}</p>
+              <p>{{type.type?.name! | capitalize}}</p>
             </div>
           }
         </div>
       </div>
+      <ion-icon *ngIf="isShowingFavs" size="large" name="heart" style="position: absolute; top: 10px; right: 10px; color: white; z-index: 100000000;" (click)="fav(pokemon)"></ion-icon>
     </div>
   }
 </div>
