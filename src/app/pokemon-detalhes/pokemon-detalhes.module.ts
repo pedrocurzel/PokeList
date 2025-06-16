@@ -20,8 +20,10 @@ import { StylePokemonIdPipe } from '../pipes/style-pokemon-id.pipe';
     PokemonDetalhesPageRoutingModule,
     PokemonBodyPipe,
     CapitalizePipe,
-    StylePokemonIdPipe
+    StylePokemonIdPipe,
+    AbilitiesPipe
   ],
-  declarations: [PokemonDetalhesPage, AbilitiesPipe]
+
+  declarations: [PokemonDetalhesPage]
 })
 export class PokemonDetalhesPageModule {}

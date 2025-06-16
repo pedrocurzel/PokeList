@@ -4,7 +4,7 @@ import { capitalizeComposed } from '../utils/pokemon.utils';
 
 @Pipe({
     name: 'abilities',
-    standalone: false
+    standalone: true
 })
 export class AbilitiesPipe implements PipeTransform {
 
