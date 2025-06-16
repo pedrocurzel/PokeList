@@ -7,16 +7,17 @@
         </div>
         <div class="pokemon-info">
             <div class="pokemon-name">
-                <h1>{{capitalizeText(pokemon.name!)}}</h1>
+                <h1>{{pokemon.name! | capitalize}}</h1>
                 <div>
                     <div *ngFor="let type of pokemon.types" class="types-container"
                         [ngClass]="type.type?.name + '-color-older'">
-                        {{capitalizeText(type.type?.name!)}}
+                        <ion-icon [src]="'../../../assets/' + type.type?.name! + '.svg'"></ion-icon>
+                        {{type.type?.name! | capitalize}}
                     </div>
                 </div>
             </div>
             <div>
-                <p>#{{pokemon.id}}</p>
+                <p>{{pokemon.id! | stylePokemonId}}</p>
             </div>
         </div>
         <div class="pokemon-details-container">

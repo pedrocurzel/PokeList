@@ -6,6 +6,8 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { PokemonCardComponent } from '../components/pokemon-card/pokemon-card.component';
+import { CapitalizePipe } from '../pipes/capitalize.pipe';
+import { StylePokemonIdPipe } from '../pipes/style-pokemon-id.pipe';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { PokemonCardComponent } from '../components/pokemon-card/pokemon-card.co
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CapitalizePipe,
+    StylePokemonIdPipe
   ],
   declarations: [HomePage, PokemonCardComponent]
 })

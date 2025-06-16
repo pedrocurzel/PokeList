@@ -28,6 +28,11 @@ export class FavPokemonService {
         return true;
     }
 
+    retriveFavs() {
+        let res = localStorage.getItem("favorites-pokemons");
+        return !res ? [] : JSON.parse(res) as Pokemon[]; 
+    }
+
 
     pokemonExists(pokemon: Pokemon) {
         let res = localStorage.getItem("favorites-pokemons");

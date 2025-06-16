@@ -10,6 +10,7 @@ import { PokemonDetalhesPage } from './pokemon-detalhes.page';
 import { AbilitiesPipe } from '../pipes/abilities.pipe';
 import { PokemonBodyPipe } from '../pipes/pokemon-body.pipe';
 import { CapitalizePipe } from '../pipes/capitalize.pipe';
+import { StylePokemonIdPipe } from '../pipes/style-pokemon-id.pipe';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { CapitalizePipe } from '../pipes/capitalize.pipe';
     IonicModule,
     PokemonDetalhesPageRoutingModule,
     PokemonBodyPipe,
-    CapitalizePipe
+    CapitalizePipe,
+    StylePokemonIdPipe
   ],
   declarations: [PokemonDetalhesPage, AbilitiesPipe]
 })
