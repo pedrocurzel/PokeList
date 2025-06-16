@@ -7,14 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { PokemonDetalhesPageRoutingModule } from './pokemon-detalhes-routing.module';
 
 import { PokemonDetalhesPage } from './pokemon-detalhes.page';
+import { AbilitiesPipe } from '../pipes/abilities.pipe';
+import { PokemonBodyPipe } from '../pipes/pokemon-body.pipe';
+import { CapitalizePipe } from '../pipes/capitalize.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PokemonDetalhesPageRoutingModule
+    PokemonDetalhesPageRoutingModule,
+    PokemonBodyPipe,
+    CapitalizePipe
   ],
-  declarations: [PokemonDetalhesPage]
+  declarations: [PokemonDetalhesPage, AbilitiesPipe]
 })
 export class PokemonDetalhesPageModule {}

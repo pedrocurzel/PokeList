@@ -1,35 +1,82 @@
-<ion-content [fullscreen]="true" *ngIf="pokemon">
-  <div class="upper-container grass-color-older">
-    <div class="header">
-      <ion-icon name="arrow-back"></ion-icon>
-    </div>
-    <div class="pokemon-name">
-      <div style="display: flex; flex-direction: column;">
-        <h1>{{capitalizeText(pokemon.name!)}}</h1>
-        <div>
-          <div *ngFor="let type of pokemon.types" style="display: inline-block; padding: 5px; border-radius: 5px; margin-right: 3px; margin-bottom: 3px;" [ngClass]="type.type?.name + '-color'">
-            {{capitalizeText(type.type?.name!)}}
-          </div>
+<ion-content [fullscreen]="true" *ngIf="pokemon" [ngClass]="pokemon.types[0]!.type?.name + '-color'">
+    <div class="upper-container">
+        <div class="header">
+            <ion-icon (click)="goToHome()" name="arrow-back"></ion-icon>
+
+            <ion-icon (click)="favPokemon()" [name]="favPokemonIcon"></ion-icon>
         </div>
-      </div>
-      <div>
-        <p>001</p>
-      </div>
+        <div class="pokemon-info">
+            <div class="pokemon-name">
+                <h1>{{capitalizeText(pokemon.name!)}}</h1>
+                <div>
+                    <div *ngFor="let type of pokemon.types" class="types-container"
+                        [ngClass]="type.type?.name + '-color-older'">
+                        {{capitalizeText(type.type?.name!)}}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>#{{pokemon.id}}</p>
+            </div>
+        </div>
+        <div class="pokemon-details-container">
+
+            <div (click)="changePokemon('backward')" style="position: absolute; top: -100px; left: 40px; border: 20px;">
+                <ion-icon name="chevron-back"></ion-icon>
+            </div>
+
+            <div (click)="changePokemon('forward')" style="position: absolute; top: -100px; right: 40px;">
+                <ion-icon  name="chevron-forward"></ion-icon>
+            </div>
+
+            <img class="pokemon-img" [src]="getPokemonImg()" class="pokemon-img" />
+            <div style="margin-top: 50px;">
+                <ion-segment style="padding: 0px 20px;">
+                    <ion-segment-button value="first" content-id="first">
+                        <ion-label>Body</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="second" content-id="second">
+                        <ion-label style="text-wrap: wrap;">Base Stats</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="third" content-id="third">
+                        <ion-label>Gallery</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+                <ion-segment-view>
+                    <ion-segment-content id="first">
+                        <div class="about-container">
+                            <p class="title">Height:</p>
+                            <p>{{pokemon.height! | pokemonBody}}m</p>
+
+                            <p class="title">Weight:</p>
+                            <p>{{pokemon.weight! | pokemonBody}}kg</p>
+
+                            <p class="title">Abilities:</p>
+                            <p>
+                                {{pokemon.abilities | abilities}}
+                            </p>
+
+                        </div>
+                    </ion-segment-content>
+                    <ion-segment-content id="second">
+                        <div class="stats-container">
+                            @for (stat of pokemon.stats; track $index) {
+                                <p class="title">{{stat.stat?.name! | capitalize}}</p>
+                                <p>{{stat.base_stat}}</p>
+                                <ion-range type="range" max="100" min="1" [value]="stat.base_stat" style="pointer-events: none;" />
+                            }
+                        </div>
+                    </ion-segment-content>
+                    <ion-segment-content id="third">
+                        <div class="gallery-container">
+                            <ion-img [src]="pokemon.sprites?.front_default"  alt="Default Pokemon Front View"/>
+                            <ion-img [src]="pokemon.sprites?.back_default"   alt="Default Pokemon Back View"/>
+                            <ion-img [src]="pokemon.sprites?.front_shiny"    alt="Shiny Pokemon Front View"/>
+                            <ion-img [src]="pokemon.sprites?.back_shiny"     alt="Shiny Pokemon Back View"/>
+                        </div>
+                    </ion-segment-content>
+                </ion-segment-view>
+            </div>
+        </div>
     </div>
-    <div style="background-color: white; flex: 1; border-radius: 20px 20px 0px 0px; margin-top: 200px; position: relative;">
-      <img [src]="getPokemonImg()" style="width: 250px; position: absolute; top: -200px; left: 50%; transform: translate(-50%, 0);"/>
-      <div style="margin-top: 50px;">
-        <h1>a</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-        <h1>asd</h1>
-      </div>
-    </div>
-  </div>
 </ion-content>

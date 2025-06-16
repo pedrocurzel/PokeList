@@ -1,14 +1,47 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
 
-$pokemon-red: #ff0000;
-$pokemon-blue: #3F6FDE;
-$pokemon-yellow: #FFD030;
-$pokemon-orange: #b3a125;
-
 :root {
-  --pokemon-red: #ff0000;
-  --pokemon-blue: #3F6FDE;
-  --pokemon-yellow: #FFD030;
-  --pokemon-orange: #b3a125;
+    --pokemon-red: #ff0000;
+    --pokemon-blue: #3F6FDE;
+    --pokemon-yellow: #FFD030;
+    --pokemon-orange: #b3a125;
+
+    --normal: #929240;
+    --fire: #E06000;
+    --water: #2870E0;
+    --electric: #E8B000;
+    --grass: #48A818;
+    --ice: #50C0C0;
+    --fighting: #A00000;
+    --poison: #800080;
+    --ground: #D0A020;
+    --flying: #8060E0;
+    --psychic: #E02060;
+    --bug: #909800;
+    --rock: #988020;
+    --ghost: #503070;
+    --dragon: #4010E0;
+    --dark: #503820;
+    --steel: #9090C0;
+    --fairy: #E06080;
+
+    --normal-older: #A8A878;
+    --fire-older: #F08030;
+    --water-older: #6890F0;
+    --electric-older: #F8D030;
+    --grass-older: #78C850;
+    --ice-older: #98D8D8;
+    --fighting-older: #C03028;
+    --poison-older: #A040A0;
+    --ground-older: #E0C068;
+    --flying-older: #A890F0;
+    --psychic-older: #F85888;
+    --bug-older: #A8B820;
+    --rock-older: #B8A038;
+    --ghost-older: #705898;
+    --dragon-older: #7038F8;
+    --dark-older: #705848;
+    --steel-older: #B8B8D0;
+    --fairy-older: #EE99AC;
 }
